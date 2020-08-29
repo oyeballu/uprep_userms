@@ -9,6 +9,10 @@ import com.uprep.userms.entity.User;
 @Repository
 public interface UserRepository extends CrudRepository<User, Long> {
 
-	@Query(nativeQuery = true, value = "select * from users where login_id=?1 AND password=2")
+	@Query(nativeQuery = true, value = "select * from users where login_id=?1 AND password=?2")
 	User findByLoginIdAndPassword(String loginId, String password);
+	@Query(nativeQuery = true, value = "select * from users where login_id=?1")
+	User findByLoginId(String username);
+	@Query(nativeQuery = true, value = "select * from users where id=?1")
+	User findUserById(Long userId);
 }
